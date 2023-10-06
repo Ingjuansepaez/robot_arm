@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <gazebo>
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <robotNamespace>brazo</robotNamespace>
+            <parameters>$(find robot_arm)/config/joint_group_position_controller.yaml</parameters>
+            <parameters>$(find robot_arm)/config/joint_group_trajectory_controller.yaml</parameters>
+            <parameters>$(find robot_arm)/config/joint_group_velocity_controller.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+
+        <joint name="hombro_joint">
+            <command_interface name="position">
+                <param name="min">-1.5708</param>
+                <param name="max">1.5708</param>
+            </command_interface> 
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <param name="initial_position">0.0</param>  
+        </joint>
+        
+        <joint name="brazo_joint">
+            <command_interface name="position">
+                <param name="min">-1.5708</param>
+                <param name="max">1.5708</param>
+            </command_interface> 
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <param name="initial_position">0.0</param>  
+        </joint>
+
+        <joint name="ante_brazo_joint">
+            <command_interface name="position">
+                <param name="min">-1.5708</param>
+                <param name="max">1.5708</param>
+            </command_interface> 
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <param name="initial_position">0.0</param>  
+        </joint>
+
+        <joint name="muneca_joint">
+            <command_interface name="position">
+                <param name="min">-1.5708</param>
+                <param name="max">1.5708</param>
+            </command_interface> 
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <param name="initial_position">0.0</param>  
+        </joint>
+
+    </ros2_control>
+</robot >
